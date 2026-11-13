@@ -1,0 +1,26 @@
+{
+  "name": "rentx",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/rahulbokhare/rentX#readme",
+  "bugs": {
+    "url": "https://github.com/rahulbokhare/rentX/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rahulbokhare/rentX.git"
+  },
+  "license": "ISC",
+  "author": "rahul",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^18.0.10",
+    "express": "^5.3.0",
+    "mongoose": "^9.12.1"
+  },
+  "devDependencies": {}
+}
