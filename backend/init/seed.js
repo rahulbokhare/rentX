@@ -13,15 +13,22 @@ async function seed() {
     await mongoose.connect(process.env.MONGO_URI);
     console.log("database connected");
 
-    // Delete old data so running this twice doesn't create duplicates
     await Car.deleteMany({});
     await User.deleteMany({});
 
-    // Every car needs an owner, so create the owner first
-    const owner = await User.create(data.user);
+
+    const owner = new User({
+      name : "rahul",
+      email : "rahul@123",
+      passwordHash : "placeholder",
+      role : "owner"
+    })
+
+    await owner.save();
+  
 
     const carsWithOwner = data.cars.map((car) => ({
-      ...car, owner : owner[Math.floor(Math.random()*2)]._id,
+      ...car, owner : owner._id,
     }))
 
     // Create sample cars that belong to that owner
@@ -29,7 +36,7 @@ async function seed() {
 
 
 
-    console.log(`Seed complete: ${owner.length} owner and 6 cars added`);
+    console.log(`Seed complete: ${owner.name} owner and 6 cars added`);
   } catch (err) {
     console.log("Seed failed:", err.message);
   } finally {
